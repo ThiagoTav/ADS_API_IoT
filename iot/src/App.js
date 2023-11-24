@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Caixa from './components/caixa';
+import Circulo from './components/circulo/circulo';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           Learn React
         </a>
         <Caixa/>
+        <Circulo/>
+        <Circulo/>
       </header>
      
     </div>
