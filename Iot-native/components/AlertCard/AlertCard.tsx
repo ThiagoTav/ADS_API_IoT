@@ -1,31 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image, Animated, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export function AlertCard({ horario, X, Y, onDelete }) {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handlePress = () => {
+    setShowDetails(!showDetails);
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.rectangle}>
-        <View style={styles.alertInfo}>
-          <Icon name="warning" size={30} color="#FFD700" style={styles.icon} />
-          <Text style={styles.centerText}>Alerta {horario}</Text>
+      <TouchableOpacity onPress={handlePress} style={styles.alertTouchable}>
+        <View style={styles.rectangle}>
+          <View style={styles.alertInfo}>
+            <Icon name="warning" size={30} color="#FFD700" style={styles.icon} />
+            <Text style={styles.centerText}>Alerta {horario}</Text>
+          </View>
+          <Text style={styles.arrow}>{showDetails ? '▲' : '▼'}</Text>
         </View>
-        <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
-          <Text style={styles.deleteButtonText}>Excluir</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.containerXY}>
-        <Animated.View style={styles.containerX}>
-          <Animated.View style={styles.rectangleX}>
-            <Text style={styles.centerTextX}>X={X}</Text>
-          </Animated.View>
-        </Animated.View>
-        <Animated.View style={styles.containerY}>
-          <Animated.View style={styles.rectangleY}>
-            <Text style={styles.centerTextY}>Y={Y}</Text>
-          </Animated.View>
-        </Animated.View>
-      </View>
+      </TouchableOpacity>
+      {showDetails && (
+        <View>
+          <View style={styles.containerXY}>
+            <Animated.View style={styles.containerX}>
+              <Animated.View style={styles.rectangleX}>
+                <Text style={styles.centerTextX}>X={X}</Text>
+              </Animated.View>
+            </Animated.View>
+            <Animated.View style={styles.containerY}>
+              <Animated.View style={styles.rectangleY}>
+                <Text style={styles.centerTextY}>Y={Y}</Text>
+              </Animated.View>
+            </Animated.View>
+          </View>
+          <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
+            <Text style={styles.deleteButtonText}>Excluir</Text>
+          </TouchableOpacity>
+        </View>
+      )}
     </View>
   );
 }
@@ -34,7 +47,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     alignItems: 'center',
-    height: 233,
     width: 371,
     borderRadius: 10,
     justifyContent: 'center',
@@ -50,7 +62,11 @@ const styles = StyleSheet.create({
     height: 90,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between', // Adicionado para espaçar o ícone e o botão
+    justifyContent: 'space-between',
+  },
+
+  alertTouchable: {
+    width: '100%',
   },
 
   alertInfo: {
@@ -65,6 +81,11 @@ const styles = StyleSheet.create({
   centerText: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: '#ECF0F1',
+  },
+
+  arrow: {
+    fontSize: 20,
     color: '#ECF0F1',
   },
 

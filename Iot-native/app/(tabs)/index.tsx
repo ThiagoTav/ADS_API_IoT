@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Text, View } from '../../components/Themed';
 import { AlertCard } from '../../components/AlertCard/AlertCard';
 import { ProfileCard } from '../../components/Profile/ProfileCard';
 
 export default function TabOneScreen() {
+  const [detailsVisible, setDetailsVisible] = useState(Array(4).fill(false)); // Inicializa um array de estados para controlar a visibilidade dos detalhes
+
+  const handleAlertPress = (index) => {
+    const newDetailsVisible = [...detailsVisible];
+    newDetailsVisible[index] = !newDetailsVisible[index];
+    setDetailsVisible(newDetailsVisible);
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-      <ProfileCard nome= {'Victor'} cidade={'Votorantim-SP'} />
+      <ProfileCard nome={'Victor'} cidade={'Votorantim-SP'} />
       <View style={styles.container}>
-        <AlertCard horario={'08:20'} X={'300'} Y={'150'} />
-        <AlertCard horario={'08:20'} X={'300'} Y={'150'} />
-        <AlertCard horario={'08:20'} X={'300'} Y={'150'} />
-        <AlertCard horario={'08:20'} X={'300'} Y={'150'} />
+        {[0, 1, 2, 3].map((index) => (
+          <AlertCard
+            key={index}
+            horario={'08:20'}
+            X={'300'}
+            Y={'150'}
+            onDelete={() => console.log(`Excluir alerta ${index}`)} // Adicione a lógica de exclusão conforme necessário
+            onPress={() => handleAlertPress(index)} // Adiciona a lógica para mostrar/ocultar detalhes
+            showDetails={detailsVisible[index]} // Passa o estado de visibilidade dos detalhes
+          />
+        ))}
       </View>
     </ScrollView>
   );
@@ -23,7 +38,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     justifyContent: 'center',
-   
   },
   container: {
     alignItems: 'center',
