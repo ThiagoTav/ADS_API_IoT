@@ -1,120 +1,160 @@
-import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Image, Animated, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export function AlertCard({ horario, X, Y }) {
+export function AlertCard({ horario, X, Y, onDelete }) {
+  const [showDetails, setShowDetails] = useState(false);
+
+  const handlePress = () => {
+    setShowDetails(!showDetails);
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.rectangle}>
-        <Image source={require('../../assets/images/84045.png')} style={styles.image} />
-        <Text style={styles.centerText}>Alerta {horario}</Text>
-      </View>  
-      <View style={styles.containerXY}>
-        <View style={styles.containerX}>
-          <View style={styles.rectangleX}>
-            <Text style={styles.centerTextX}>X={X}</Text>
+      <TouchableOpacity onPress={handlePress} style={styles.alertTouchable}>
+        <View style={styles.rectangle}>
+          <View style={styles.alertInfo}>
+            <Icon name="warning" size={30} color="#FFD700" style={styles.icon} />
+            <Text style={styles.centerText}>Alerta {horario}</Text>
           </View>
+          <Text style={styles.arrow}>{showDetails ? '▲' : '▼'}</Text>
         </View>
-        <View style={styles.containerY}>
-          <View style={styles.rectangleY}>
-            <Text style={styles.centerTextY}>Y={Y}</Text>
+      </TouchableOpacity>
+      {showDetails && (
+        <View>
+          <View style={styles.containerXY}>
+            <Animated.View style={styles.containerX}>
+              <Animated.View style={styles.rectangleX}>
+                <Text style={styles.centerTextX}>X={X}</Text>
+              </Animated.View>
+            </Animated.View>
+            <Animated.View style={styles.containerY}>
+              <Animated.View style={styles.rectangleY}>
+                <Text style={styles.centerTextY}>Y={Y}</Text>
+              </Animated.View>
+            </Animated.View>
           </View>
+          <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
+            <Text style={styles.deleteButtonText}>Excluir</Text>
+          </TouchableOpacity>
         </View>
-      </View>
+      )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column', // Changed from 'row' to 'column'
+    flexDirection: 'column',
     alignItems: 'center',
-    height: 193, // Adjusted height to accommodate both X and Y components
     width: 371,
     borderRadius: 10,
     justifyContent: 'center',
+    backgroundColor: '#2C3E50',
+    marginVertical: 10,
   },
 
   rectangle: {
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#34495E',
     width: 330,
     height: 90,
-    alignContent: 'center',
     flexDirection: 'row',
-    textAlign: 'center',
     alignItems: 'center',
-    top: 20
+    justifyContent: 'space-between',
+  },
+
+  alertTouchable: {
+    width: '100%',
+  },
+
+  alertInfo: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  icon: {
+    marginRight: 10,
   },
 
   centerText: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'black',
-    left: 30,
-    gap: 50
+    color: '#ECF0F1',
   },
 
-  image: {
-    width: 50,
-    height: 40,
-    alignSelf: 'center',
+  arrow: {
+    fontSize: 20,
+    color: '#ECF0F1',
   },
+
   containerX: {
-    flexDirection: 'row',
     alignItems: 'center',
     height: 123,
-    width: 185, // Adjusted width to split the container in half
+    width: 185,
     borderRadius: 10,
     justifyContent: 'center',
-    gap: 50,
+    gap: 10,
   },
 
   rectangleX: {
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#34495E',
     width: 130,
     height: 70,
-    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   centerTextX: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: 'black', 
+    color: '#ECF0F1',
   },
 
   containerY: {
-    flexDirection: 'row',
     alignItems: 'center',
     height: 123,
-    width: 185, // Adjusted width to split the container in half
+    width: 185,
     borderRadius: 10,
     justifyContent: 'center',
-    gap: 50,
+    gap: 10,
   },
 
   rectangleY: {
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#34495E',
     width: 130,
     height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   centerTextY: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: 'black', 
+    color: '#ECF0F1',
   },
 
   containerXY: {
     flexDirection: 'row',
-    gap: 10,
-    marginTop: 10, // Added margin to separate Alert from X and Y
+    justifyContent: 'space-around',
+    marginTop: 10,
+  },
+
+  deleteButton: {
+    backgroundColor: '#E74C3C',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 10,
+  },
+
+  deleteButtonText: {
+    color: '#ECF0F1',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
