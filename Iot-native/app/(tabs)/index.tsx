@@ -5,7 +5,7 @@ import { AlertCard } from '../../components/AlertCard/AlertCard';
 import { ProfileCard } from '../../components/Profile/ProfileCard';
 
 export default function TabOneScreen() {
-  const [detailsVisible, setDetailsVisible] = useState(Array(4).fill(false)); // Inicializa um array de estados para controlar a visibilidade dos detalhes
+  const [detailsVisible, setDetailsVisible] = useState(Array(4).fill(false));
 
   const handleAlertPress = (index) => {
     const newDetailsVisible = [...detailsVisible];
@@ -15,7 +15,7 @@ export default function TabOneScreen() {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
-      <ProfileCard nome={'Victor'} cidade={'Votorantim-SP'} />
+      <ProfileCard nome={'User'} cidade={'Sorocaba-SP'} />
       <View style={styles.container}>
         {[0, 1, 2, 3].map((index) => (
           <AlertCard
@@ -23,9 +23,9 @@ export default function TabOneScreen() {
             horario={'08:20'}
             X={'300'}
             Y={'150'}
-            onDelete={() => console.log(`Excluir alerta ${index}`)} // Adicione a lógica de exclusão conforme necessário
-            onPress={() => handleAlertPress(index)} // Adiciona a lógica para mostrar/ocultar detalhes
-            showDetails={detailsVisible[index]} // Passa o estado de visibilidade dos detalhes
+            onDelete={() => console.log(`Excluir alerta ${index}`)}
+            onPress={() => handleAlertPress(index)}
+            showDetails={detailsVisible[index]}
           />
         ))}
       </View>
@@ -42,10 +42,9 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#1A2533', // Cor de fundo mais escura
     gap: 20,
     paddingVertical: 20,
-    backgroundColor: '#D9D9D9',
     borderRadius: 20,
   },
   title: {
