@@ -1,24 +1,25 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, Animated } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'; // Importe o componente de ícone
 
 export function AlertCard({ horario, X, Y }) {
   return (
     <View style={styles.container}>
       <View style={styles.rectangle}>
-        <Image source={require('../../assets/images/84045.png')} style={styles.image} />
+        <Icon name="warning" size={30} color="#FFD700" style={styles.icon} />
         <Text style={styles.centerText}>Alerta {horario}</Text>
-      </View>  
+      </View>
       <View style={styles.containerXY}>
-        <View style={styles.containerX}>
-          <View style={styles.rectangleX}>
+        <Animated.View style={styles.containerX}>
+          <Animated.View style={styles.rectangleX}>
             <Text style={styles.centerTextX}>X={X}</Text>
-          </View>
-        </View>
-        <View style={styles.containerY}>
-          <View style={styles.rectangleY}>
+          </Animated.View>
+        </Animated.View>
+        <Animated.View style={styles.containerY}>
+          <Animated.View style={styles.rectangleY}>
             <Text style={styles.centerTextY}>Y={Y}</Text>
-          </View>
-        </View>
+          </Animated.View>
+        </Animated.View>
       </View>
     </View>
   );
@@ -26,95 +27,89 @@ export function AlertCard({ horario, X, Y }) {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column', // Changed from 'row' to 'column'
+    flexDirection: 'column',
     alignItems: 'center',
-    height: 193, // Adjusted height to accommodate both X and Y components
+    height: 193,
     width: 371,
     borderRadius: 10,
     justifyContent: 'center',
+    backgroundColor: '#2C3E50',
+    marginVertical: 10,
   },
 
   rectangle: {
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#34495E',
     width: 330,
     height: 90,
-    alignContent: 'center',
     flexDirection: 'row',
-    textAlign: 'center',
     alignItems: 'center',
-    top: 20
+  },
+
+  icon: {
+    marginRight: 10,
   },
 
   centerText: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'black',
-    left: 30,
-    gap: 50
+    color: '#ECF0F1',
   },
 
-  image: {
-    width: 50,
-    height: 40,
-    alignSelf: 'center',
-  },
   containerX: {
-    flexDirection: 'row',
     alignItems: 'center',
     height: 123,
-    width: 185, // Adjusted width to split the container in half
+    width: 185,
     borderRadius: 10,
     justifyContent: 'center',
-    gap: 50,
+    gap: 10,
   },
 
   rectangleX: {
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#34495E',
     width: 130,
     height: 70,
-    alignContent: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   centerTextX: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: 'black', 
+    color: '#ECF0F1',
   },
 
   containerY: {
-    flexDirection: 'row',
     alignItems: 'center',
     height: 123,
-    width: 185, // Adjusted width to split the container in half
+    width: 185,
     borderRadius: 10,
     justifyContent: 'center',
-    gap: 50,
+    gap: 10,
   },
 
   rectangleY: {
-    borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#34495E',
     width: 130,
     height: 70,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   centerTextY: {
-    fontSize: 30,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: 'black', 
+    color: '#ECF0F1',
   },
 
   containerXY: {
     flexDirection: 'row',
-    gap: 10,
-    marginTop: 10, // Added margin to separate Alert from X and Y
+    justifyContent: 'space-around',
+    marginTop: 10,
   },
 });
