@@ -1,13 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image, Animated } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // Importe o componente de ícone
+import { StyleSheet, View, Text, Image, Animated, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export function AlertCard({ horario, X, Y }) {
+export function AlertCard({ horario, X, Y, onDelete }) {
   return (
     <View style={styles.container}>
       <View style={styles.rectangle}>
-        <Icon name="warning" size={30} color="#FFD700" style={styles.icon} />
-        <Text style={styles.centerText}>Alerta {horario}</Text>
+        <View style={styles.alertInfo}>
+          <Icon name="warning" size={30} color="#FFD700" style={styles.icon} />
+          <Text style={styles.centerText}>Alerta {horario}</Text>
+        </View>
+        <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
+          <Text style={styles.deleteButtonText}>Excluir</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.containerXY}>
         <Animated.View style={styles.containerX}>
@@ -29,7 +34,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'column',
     alignItems: 'center',
-    height: 193,
+    height: 233,
     width: 371,
     borderRadius: 10,
     justifyContent: 'center',
@@ -43,6 +48,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#34495E',
     width: 330,
     height: 90,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between', // Adicionado para espaçar o ícone e o botão
+  },
+
+  alertInfo: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -111,5 +122,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginTop: 10,
+  },
+
+  deleteButton: {
+    backgroundColor: '#E74C3C',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 10,
+  },
+
+  deleteButtonText: {
+    color: '#ECF0F1',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
