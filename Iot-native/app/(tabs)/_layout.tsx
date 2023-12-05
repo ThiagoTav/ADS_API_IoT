@@ -22,7 +22,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Projeto Anti-Cochilo',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
   
         }}
       />
@@ -30,7 +30,7 @@ export default function TabLayout() {
         name="two"
         options={{
           title: 'Saiba mais',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="plus" color={color} />,
         }}
       />
     </Tabs>
