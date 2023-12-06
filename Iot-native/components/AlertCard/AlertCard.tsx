@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Image, Animated, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, Animated, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export function AlertCard({ horario, X, Y, onDelete }) {
+export function AlertCard({ horario, X, Y }) {
   const [showDetails, setShowDetails] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   const handlePress = () => {
     setShowDetails(!showDetails);
   };
+
+  if (!visible) {
+    return null; // Renderize nulo se o componente não for visível
+  }
 
   return (
     <View style={styles.container}>
@@ -34,9 +39,6 @@ export function AlertCard({ horario, X, Y, onDelete }) {
               </Animated.View>
             </Animated.View>
           </View>
-          <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
-            <Text style={styles.deleteButtonText}>Excluir</Text>
-          </TouchableOpacity>
         </View>
       )}
     </View>
