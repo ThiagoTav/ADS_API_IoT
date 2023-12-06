@@ -1,11 +1,74 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import { Text, View } from '../../components/Themed';
+import { View } from '../../components/Themed';
 import { AlertCard } from '../../components/AlertCard/AlertCard';
 import { ProfileCard } from '../../components/Profile/ProfileCard';
+import axios from 'axios';
 
 export default function TabOneScreen() {
-  const [detailsVisible, setDetailsVisible] = useState(Array(4).fill(false));
+  const [detailsVisible, setDetailsVisible] = useState([]);
+  const [alertComponents, setAlertComponents] = useState([]);
+
+  useEffect(() => {
+    const fetchDataFromAPI = async () => {
+      try {
+        const response = await axios.get('https://thiagotavares.pythonanywhere.com/api/dados-do-sensor/');
+        const alerts = response.data;
+
+        // Criar instâncias de AlertCard a partir dos dados recebidos
+        const alertCards = alerts.map((alert, index) => (
+          <AlertCard
+            key={index}
+            horario={alert.horario}
+            X={alert.X}
+            Y={alert.Y}
+            onDelete={() => console.log(`Excluir alerta ${index}`)}
+            onPress={() => handleAlertPress(index)}
+            showDetails={detailsVisible[index]}
+          />
+        ));
+
+        // Atualizar o estado local com as instâncias de AlertCard
+        setAlertComponents(alertCards);
+      } catch (error) {
+        console.error('Erro ao buscar dados da API:', error);
+      }
+    };
+
+    const subscribeToWebSocket = () => {
+      const socket = new WebSocket('wss://thiagotavares.pythonanywhere.com/ws/external_data/');
+
+      socket.onmessage = (event) => {
+        const newAlert = JSON.parse(event.data);
+
+        // Atualizar o estado local para incluir o novo AlertCard
+        setAlertComponents(prevAlerts => [
+          ...prevAlerts,
+          <AlertCard
+            key={prevAlerts.length}
+            horario={newAlert.horario}
+            X={newAlert.X}
+            Y={newAlert.Y}
+            onDelete={() => console.log(`Excluir alerta ${prevAlerts.length}`)}
+            onPress={() => handleAlertPress(prevAlerts.length)}
+            showDetails={detailsVisible[prevAlerts.length]}
+          />
+        ]);
+      };
+
+      socket.onclose = (event) => {
+        console.log('Conexão WebSocket fechada:', event.reason);
+      };
+    };
+
+    fetchDataFromAPI();
+    subscribeToWebSocket();
+  }, []);
+
+
+  useEffect(() => {
+    setDetailsVisible(new Array(alertComponents.length).fill(false));
+  }, [alertComponents]);
 
   const handleAlertPress = (index) => {
     const newDetailsVisible = [...detailsVisible];
@@ -17,21 +80,12 @@ export default function TabOneScreen() {
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
       <ProfileCard nome={'User'} cidade={'Sorocaba-SP'} />
       <View style={styles.container}>
-        {[0, 1, 2, 3].map((index) => (
-          <AlertCard
-            key={index}
-            horario={'08:20'}
-            X={'300'}
-            Y={'150'}
-            onDelete={() => console.log(`Excluir alerta ${index}`)}
-            onPress={() => handleAlertPress(index)}
-            showDetails={detailsVisible[index]}
-          />
-        ))}
+        {alertComponents}
       </View>
     </ScrollView>
   );
 }
+
 
 const styles = StyleSheet.create({
   scrollViewContainer: {
