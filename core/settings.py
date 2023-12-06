@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-yq%f8e^-c!l%$q=gpn!2snjj^a9ars$ok@y_2fltfza$j8czno
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'projetoIoT',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +78,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'core.wsgi.application'
 
+ASGI_APPLICATION = 'projetoIoT.routing.application' 
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
