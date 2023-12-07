@@ -1,35 +1,21 @@
 # Projeto: Integração Vertical e Horizontal entre ADS e Mecatrônica para o Desenvolvimento do Sistema "Anti Cochilo"
 Este repositório foi criado como parte fundamental do projeto que busca integrar os conhecimentos das áreas de Análise e Desenvolvimento de Sistemas (ADS) e Mecatrônica. Nosso objetivo central é o desenvolvimento do inovador sistema "Anti Cochilo", que visa prevenir a sonolência do condutor durante a condução. Aqui, você encontrará todos os recursos, códigos, documentações e informações essenciais para a implementação, testes e aprimoramento contínuo deste sistema. Seja bem-vindo ao nosso espaço de colaboração e inovação tecnológica!
+## Funcionalidades:
 
-# Nome do Seu App
+Detecção de Sonolência:
 
-```bash
-npx react-native init NomeDoSeuApp
-```
-## Instalação do React Native
+Nosso sistema é habilidoso em reconhecer indicadores de sonolência do condutor ao empregar tecnologias avançadas, tais como a detecção dos padrões de movimento nos eixos X e Y.
 
-```bash
-cd NomeDoSeuApp
-```
+Alertas Personalizados:
 
+Com base nos sinais de sonolência identificados, o projeto oferece alertas personalizados para manter o motorista alerta, vibrações suaves na cabeça do motorista e mensagens visuais.
 
-### Pré-requisitos
+Intervenção Preventiva:
 
-Certifique-se de ter as seguintes ferramentas instaladas no seu sistema:
+Para além dos alertas, nosso sistema pode acionar medidas preventivas, como estabelecer comunicação com a central a fim de contatar o motorista diretamente.
 
-- Node.js e npm: [Node.js](https://nodejs.org/)
-- JDK (Java Development Kit): [JDK](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
-- Android Studio: [Android Studio](https://developer.android.com/studio)
+Análise de Dados:
 
-### Configuração do Ambiente
+O sistema registra e analisa os padrões de comportamento do motorista ao longo do tempo, oferecendo insights acerca dos momentos em que a sonolência é mais pronunciada.
+# Instalações
 
-1. **Node.js e npm**: Verifique se estão instalados executando `node -v` e `npm -v`. Se não estiverem, baixe e instale a partir do link fornecido.
-2. **JDK e Android Studio**: Configure as variáveis de ambiente `JAVA_HOME` e `ANDROID_HOME` para apontar para as pastas de instalação do JDK e Android SDK, respectivamente.
-
-### Instalação do React Native CLI
-
-Execute o seguinte comando no terminal:
-
-```bash
-npm install -g react-native-cli
-```
