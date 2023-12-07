@@ -1,7 +1,17 @@
 # Projeto: Integração Vertical e Horizontal entre ADS e Mecatrônica para o Desenvolvimento do Sistema "Anti Cochilo"
-Este repositório foi criado como parte fundamental do projeto que busca integrar os conhecimentos das áreas de Análise e Desenvolvimento de Sistemas (ADS) e Mecatrônica. Nosso objetivo central é o desenvolvimento do inovador sistema "Anti Cochilo", que visa prevenir a sonolência do condutor durante a condução. Aqui, você encontrará todos os recursos, códigos, documentações e informações essenciais para a implementação, testes e aprimoramento contínuo deste sistema. Seja bem-vindo ao nosso espaço de colaboração e inovação tecnológica!# Nome do Seu App
+Este repositório foi criado como parte fundamental do projeto que busca integrar os conhecimentos das áreas de Análise e Desenvolvimento de Sistemas (ADS) e Mecatrônica. Nosso objetivo central é o desenvolvimento do inovador sistema "Anti Cochilo", que visa prevenir a sonolência do condutor durante a condução. Aqui, você encontrará todos os recursos, códigos, documentações e informações essenciais para a implementação, testes e aprimoramento contínuo deste sistema. Seja bem-vindo ao nosso espaço de colaboração e inovação tecnológica!
 
+# Nome do Seu App
+
+```bash
+npx react-native init NomeDoSeuApp
+```
 ## Instalação do React Native
+
+```bash
+cd NomeDoSeuApp
+```
+
 
 ### Pré-requisitos
 
@@ -22,3 +32,4 @@ Execute o seguinte comando no terminal:
 
 ```bash
 npm install -g react-native-cli
+```
