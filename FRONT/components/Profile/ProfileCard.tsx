@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, Modal } from 'react-native';
+import { StyleSheet, View, Text, Image, TextInput, TouchableOpacity, Modal, Pressable } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function ProfileCard({ nome: initialNome, cidade: initialCidade }) {
   const [nome, setNome] = useState(initialNome);
   const [cidade, setCidade] = useState(initialCidade);
   const [isEditing, setIsEditing] = useState(false);
+  const [confirmationModalVisible, setConfirmationModalVisible] = useState(false);
 
   useEffect(() => {
     // Carregar dados salvos ao inicializar o componente
@@ -38,8 +39,20 @@ export function ProfileCard({ nome: initialNome, cidade: initialCidade }) {
   };
 
   const handleSavePress = () => {
-    saveProfileData();
-    setIsEditing(false);
+    // Exibe o modal de confirmação
+    setConfirmationModalVisible(true);
+  };
+
+  const handleConfirmation = (confirmed) => {
+    // Callback chamado após o usuário confirmar ou cancelar no modal de confirmação
+    if (confirmed) {
+      // Usuário confirmou, salva os dados e fecha o modal de edição
+      saveProfileData();
+      setIsEditing(false);
+    }
+
+    // Fecha o modal de confirmação
+    setConfirmationModalVisible(false);
   };
 
   return (
@@ -80,6 +93,21 @@ export function ProfileCard({ nome: initialNome, cidade: initialCidade }) {
           </View>
         </View>
       </Modal>
+
+      {/* Modal de confirmação */}
+      <Modal transparent={true} visible={confirmationModalVisible} animationType="slide">
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.confirmationText}>Deseja salvar as alterações?</Text>
+            <Pressable onPress={() => handleConfirmation(true)}>
+              <Text style={styles.confirmationOption}>Sim</Text>
+            </Pressable>
+            <Pressable onPress={() => handleConfirmation(false)}>
+              <Text style={styles.confirmationOption}>Cancelar</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -98,7 +126,7 @@ const styles = StyleSheet.create({
   circle: {
     borderRadius: 50,
     padding: 10,
-    backgroundColor: '#2C3E50', // Cor de fundo escuro
+    backgroundColor: '#2C3E50',
     width: 65,
     height: 65,
     justifyContent: 'center',
@@ -113,7 +141,7 @@ const styles = StyleSheet.create({
   rectangle: {
     borderRadius: 10,
     padding: 10,
-    backgroundColor: '#34495E', // Cor de fundo escuro
+    backgroundColor: '#34495E',
     width: 360,
     height: 120,
     flexDirection: 'row',
@@ -131,11 +159,10 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     paddingLeft: 8,
     color: '#ECF0F1',
-    
   },
 
   saveButton: {
-    backgroundColor: '#27AE60', // Cor de fundo verde
+    backgroundColor: '#27AE60',
     padding: 8,
     borderRadius: 5,
     marginTop: 8,
@@ -144,34 +171,33 @@ const styles = StyleSheet.create({
   },
 
   saveButtonText: {
-    color: '#ECF0F1', // Cor do texto branco
+    color: '#ECF0F1',
   },
 
   editButton: {
-    backgroundColor: '#3498DB', // Cor de fundo azul
+    backgroundColor: '#3498DB',
     padding: 8,
     borderRadius: 5,
     marginTop: 8,
     alignSelf: 'flex-start',
-    elevation: 2, // Adicionando sombra para destacar o botão
+    elevation: 2,
   },
 
   editButtonText: {
-    color: '#ECF0F1', // Cor do texto branco
+    color: '#ECF0F1',
   },
 
   textProfile: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#ECF0F1', // Cor do texto branco
+    color: '#ECF0F1',
   },
 
   textProfileCity: {
     fontSize: 14,
-    color: '#BDC3C7', // Cor do texto cinza claro
+    color: '#BDC3C7',
   },
 
-  // Estilos para o Modal
   modalContainer: {
     flex: 1,
     justifyContent: 'center',
@@ -185,6 +211,16 @@ const styles = StyleSheet.create({
     padding: 20,
     width: 300,
   },
-  
 
+  confirmationText: {
+    fontSize: 18,
+    color: '#ECF0F1',
+    marginBottom: 10,
+  },
+
+  confirmationOption: {
+    fontSize: 16,
+    color: '#3498DB',
+    marginBottom: 10,
+  },
 });
