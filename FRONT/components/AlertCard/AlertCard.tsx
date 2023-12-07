@@ -37,9 +37,6 @@ export function AlertCard({ horario, X, Y, onDelete }) {
               </Animated.View>
             </Animated.View>
           </View>
-          <TouchableOpacity onPress={onDelete} style={styles.deleteButton}>
-            <Text style={styles.deleteButtonText}>Excluir</Text>
-          </TouchableOpacity>
         </View>
       )}
     </View>
