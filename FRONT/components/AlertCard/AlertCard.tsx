@@ -3,9 +3,7 @@ import { StyleSheet, View, Text, Image, Animated, TouchableOpacity } from 'react
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export function AlertCard({ horario, X, Y, onDelete }) {
-  console.log('horario:', horario);
-  console.log('X:', X);
-  console.log('Y:', Y);
+
   const [showDetails, setShowDetails] = useState(false);
 
   const handlePress = () => {
