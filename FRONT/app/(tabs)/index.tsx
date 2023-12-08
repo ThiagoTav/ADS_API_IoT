@@ -5,6 +5,7 @@ import 'moment/locale/pt-br';
 import { AlertCard, AlertProps } from '../../components/AlertCard/AlertCard';
 import { ProfileCard } from '../../components/Profile/ProfileCard';
 import axios from 'axios';
+import AlertPopup from '../../components/AlertCard/PopUp';
 
 const TabOneScreen: React.FC = () => {
   const [detailsVisible, setDetailsVisible] = useState<boolean[]>([]);
@@ -69,7 +70,6 @@ const TabOneScreen: React.FC = () => {
       };
 
       socket.onclose = (event) => {
-        console.log('Conexão WebSocket fechada:', event.reason);
       };
     };
 
@@ -125,6 +125,7 @@ const TabOneScreen: React.FC = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContainer}>
+      <AlertPopup />
       <ProfileCard nome={'User'} cidade={'Sorocaba-SP'} />
       <View style={styles.container}>
         {alertComponents}
