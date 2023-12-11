@@ -72,3 +72,20 @@ Para executar o projeto no simulador iOS, utilize:
 ```bash
 react-native run-ios
 ```
+## Como usar
+utilize este comando para clonar o repositório
+```git
+git clone https://github.com/ThiagoTav/ADS_API_IoT.git
+
+```
+antes, utilize este comando para executar o servidor de desenvolvimento
+```
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+Abra http://localhost:3000 com o seu browser para ver o resultado.
