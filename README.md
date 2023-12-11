@@ -97,3 +97,6 @@ Após iniciar o servidor local e acessar o localhost, você será direcionado pa
 
 Este espaço apresenta o perfil do motorista que está no controle do veículo no momento, assim como a cidade onde desempenha suas funções profissionais. O perfil é altamente customizável e conta com persistência de dados, embora ainda não esteja integrado ao banco de dados
 
+![eixos x e y](https://github.com/ThiagoTav/ADS_API_IoT/assets/123522796/9f4b8cc5-c070-4357-9190-69cb2fa52f4d)
+
+Este componente desempenha a análise minuciosa dos eixos cartesianos x e y, os quais representam a posição da cabeça do motorista. Caso a posição da cabeça esteja abaixo de um limiar específico em um desses eixos, o sistema é acionado, emitindo tanto um alerta sonoro quanto uma vibração, visando alertar o motorista sobre essa situação.
