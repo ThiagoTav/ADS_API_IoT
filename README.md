@@ -92,6 +92,8 @@ Abra http://localhost:3000 com o seu browser para ver o resultado.
 
 Após iniciar o servidor local e acessar o localhost, você será direcionado para a interface do projeto. Nessa interface, estarão disponíveis os dados gerados pelo sistema "Anti Cochilo". Esses dados fornecem alertas relacionados ao estado de sono do motorista, oferecendo informações detalhadas, como datas específicas e os ângulos registrados nos eixos X e Y. Esses alertas são representativos dos momentos em que o sistema identifica sinais de sonolência com base nos padrões de movimento detectados durante a condução. Ao explorar a interface, será possível visualizar esses alertas e compreender os momentos em que a sonolência foi detectada, contribuindo assim para a prevenção de situações de risco durante a condução.
 
-![WhatsApp Image 2023-12-11 at 13 10 10](https://github.com/ThiagoTav/ADS_API_IoT/assets/123522796/1d5dd15f-2376-4cd8-a070-ca48a4034be1)
 
+![nome user](https://github.com/ThiagoTav/ADS_API_IoT/assets/123522796/8be2d1c9-8e9b-4904-b8a6-50d3ef62387e)
+
+Este espaço apresenta o perfil do motorista que está no controle do veículo no momento, assim como a cidade onde desempenha suas funções profissionais. O perfil é altamente customizável e conta com persistência de dados, embora ainda não esteja integrado ao banco de dados
 
