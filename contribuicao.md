@@ -16,6 +16,15 @@ Em resumo, as modificações nos componentes `AlertCard`, `Profile` e `Graphic`,
 ---
 
 **Thiago T:**
+Durante o desenvolvimento do projeto, contribuí junto com Victor para a criação da API e sua hospedagem no site PythonAnyWhere. Isso permitiu que o projeto de mecatrônica conseguisse conectar-se e enviar JSON para nossa API. Posteriormente, fui responsável por criar as funções para o tratamento dos dados, armazenamento ou exclusão no banco de dados.
+
+Foram desenvolvidas as seguintes funcionalidades:
+- Função para criar ou excluir URLs
+- Serializers
+- Views
+- Conectividade com o banco de dados SQLite
+
+Após a criação da API, auxiliei nossa equipe de frontend na integração entre o frontend e os dados do banco de dados da API.
 
 ---
 
