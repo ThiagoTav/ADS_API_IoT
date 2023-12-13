@@ -100,3 +100,10 @@ Este espaço apresenta o perfil do motorista que está no controle do veículo n
 ![eixos x e y](https://github.com/ThiagoTav/ADS_API_IoT/assets/123522796/9f4b8cc5-c070-4357-9190-69cb2fa52f4d)
 
 Este componente desempenha a análise minuciosa dos eixos cartesianos x e y, os quais representam a posição da cabeça do motorista. Caso a posição da cabeça esteja abaixo de um limiar específico em um desses eixos, o sistema é acionado, emitindo tanto um alerta sonoro quanto uma vibração, visando alertar o motorista sobre essa situação.
+
+![WhatsApp Image 2023-12-13 at 16 09 43](https://github.com/ThiagoTav/ADS_API_IoT/assets/123522796/737d2874-b8ac-4884-9dab-5526450f9e77)
+
+Os gráficos exibirão as variações nos eixos x e y, mostrando as diferentes mudanças entre eles e destacando os picos de alteração.
+
+
+
