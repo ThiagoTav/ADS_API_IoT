@@ -1,118 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { LineChart } from 'react-native-chart-kit';
-import axios from 'axios';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import GraphicComponent from '../../components/Graphic/GraphicComponent'; // Certifique-se de ajustar o caminho de importação
 
-export default function TabTwoScreen() {
-  const [dadosDoGrafico, setDadosDoGrafico] = useState([]);
-
-  useEffect(() => {
-    const fetchDataFromAPI = async () => {
-      try {
-        const response = await axios.get('https://thiagotavares.pythonanywhere.com/api/dados-do-sensor/');
-        const alerts = response.data;
-
-        if (!Array.isArray(alerts)) {
-          console.error('Dados da API não são um array:', alerts);
-          return;
-        }
-
-        const dadosGrafico = alerts.map(alert => ({
-          Y: parseFloat(alert.acceleration_y),
-          X: parseFloat(alert.acceleration_x),
-          horario: alert.timestamp,
-        }));
-
-        console.log('Dados da API:', dadosGrafico);
-
-        if (dadosGrafico.some(data => isNaN(data.X) || isNaN(data.Y))) {
-          console.error('Alguns dados não são numéricos:', dadosGrafico);
-          return;
-        }
-
-        // Verifica se há novos dados antes de atualizar o estado do gráfico
-        if (!areArraysEqual(dadosGrafico, dadosDoGrafico)) {
-          setDadosDoGrafico(dadosGrafico);
-        }
-      } catch (error) {
-        console.error('Erro ao buscar dados da API:', error);
-      }
-    };
-
-    // Buscar dados periodicamente a cada 5 segundos (ajuste conforme necessário)
-    const intervalId = setInterval(fetchDataFromAPI, 5000);
-
-    // Limpar o intervalo quando o componente for desmontado
-    return () => clearInterval(intervalId);
-  }, [dadosDoGrafico]); // Adiciona dadosDoGrafico como uma dependência
-
-  // Função para verificar se dois arrays são iguais
-  const areArraysEqual = (arr1, arr2) => {
-    return JSON.stringify(arr1) === JSON.stringify(arr2);
-  };
-
-  const valoresX = dadosDoGrafico.map(item => item.X);
-  const valoresY = dadosDoGrafico.map(item => item.Y);
-
-  const dataX = {
-    datasets: [
-      {
-        data: valoresX,
-      },
-    ],
-  };
-
-  const dataY = {
-    datasets: [
-      {
-        data: valoresY,
-      },
-    ],
-  };
-
-  const chartConfig = {
-    backgroundGradientFrom: '#1A2533',
-    backgroundGradientTo: '#1A2533',
-    decimalPlaces: 2,
-    color: (opacity = 1) => `rgba(255, 215, 0, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(236, 240, 241, ${opacity})`,
-    style: {
-      borderRadius: 10,
-    },
-  };
-
+const TabTwoScreen: React.FC = () => {
   return (
     <View style={styles.container}>
-      {dadosDoGrafico.length > 0 ? (
-        <View>
-          {/* Título para o eixo X */}
-          <Text style={styles.chartTitle}>Gráfico para o eixo X</Text>
-          <LineChart
-            data={dataX}
-            width={350}
-            height={300}
-            yAxisLabel={'X '}
-            chartConfig={chartConfig}
-            bezier
-            style={{ marginVertical: 8, borderRadius: 10 }}
-          />
-
-          {/* Título para o eixo Y */}
-          <Text style={styles.chartTitle}>Gráfico para o eixo Y</Text>
-          <LineChart
-            data={dataY}
-            width={350}
-            height={300}
-            chartConfig={chartConfig}
-            bezier
-            style={{ marginVertical: 8, borderRadius: 10 }}
-          />
-        </View>
-      ) : (
-        <View>
-          {/* Exiba um indicador de carregamento ou uma mensagem de falta de dados aqui */}
-        </View>
-      )}
+      {/* Aqui você integra o GraphicComponent diretamente na tela */}
+      <GraphicComponent />
     </View>
   );
 }
@@ -124,10 +18,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#1A2533',
   },
-  chartTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#ffffff',
-  },
 });
+
+export default TabTwoScreen;
