@@ -12,20 +12,44 @@ export default function TabTwoScreen() {
         const response = await axios.get('https://thiagotavares.pythonanywhere.com/api/dados-do-sensor/');
         const alerts = response.data;
 
+        if (!Array.isArray(alerts)) {
+          console.error('Dados da API não são um array:', alerts);
+          return;
+        }
+
         const dadosGrafico = alerts.map(alert => ({
-          Y: alert.acceleration_y,
-          X: alert.acceleration_x,
+          Y: parseFloat(alert.acceleration_y),
+          X: parseFloat(alert.acceleration_x),
           horario: alert.timestamp,
         }));
 
-        setDadosDoGrafico(dadosGrafico);
+        console.log('Dados da API:', dadosGrafico);
+
+        if (dadosGrafico.some(data => isNaN(data.X) || isNaN(data.Y))) {
+          console.error('Alguns dados não são numéricos:', dadosGrafico);
+          return;
+        }
+
+        // Verifica se há novos dados antes de atualizar o estado do gráfico
+        if (!areArraysEqual(dadosGrafico, dadosDoGrafico)) {
+          setDadosDoGrafico(dadosGrafico);
+        }
       } catch (error) {
         console.error('Erro ao buscar dados da API:', error);
       }
     };
 
-    fetchDataFromAPI();
-  }, []);
+    // Buscar dados periodicamente a cada 5 segundos (ajuste conforme necessário)
+    const intervalId = setInterval(fetchDataFromAPI, 5000);
+
+    // Limpar o intervalo quando o componente for desmontado
+    return () => clearInterval(intervalId);
+  }, [dadosDoGrafico]); // Adiciona dadosDoGrafico como uma dependência
+
+  // Função para verificar se dois arrays são iguais
+  const areArraysEqual = (arr1, arr2) => {
+    return JSON.stringify(arr1) === JSON.stringify(arr2);
+  };
 
   const valoresX = dadosDoGrafico.map(item => item.X);
   const valoresY = dadosDoGrafico.map(item => item.Y);
@@ -99,7 +123,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1A2533',
-
   },
   chartTitle: {
     fontSize: 18,
