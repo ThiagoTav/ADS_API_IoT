@@ -12,7 +12,11 @@ Em resumo, as modificações nos componentes `AlertCard`, `Profile` e `Graphic`,
 ---
 
 ## **Gabriel R:**
+Primeiramente, fui integrado no desenvolvimento do Figma, encarregado de criar as telas do aplicativo e interagir com o cliente para compreender suas necessidades e desejos, fundamentais para orientar nossas ações.
 
+Em seguida, o passo seguinte foi ponderar sobre a linguagem mais adequada para o projeto. Após discussões, chegamos a um consenso: decidimos prosseguir utilizando o Next.js.
+
+Assim que estabelecemos o projeto base, demos início ao desenvolvimento das telas. Posteriormente, foquei na elaboração da documentação do projeto. Cada seção foi minuciosamente detalhada e explicativa, visando tornar o conteúdo acessível e compreensível. Também busquei complementar o texto com imagens para facilitar a assimilação das informações.
 ---
 
 ## **Thiago T:**
