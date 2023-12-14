@@ -1,6 +1,6 @@
-## Contribuições
+# Contribuições
 
-**Gabriel C:**
+## **Gabriel C:**
 Durante o processo de aprimoramento da *Experiência do Usuário (UX/UI)* do projeto, concentrei meus esforços em telas móveis, realizando modificações nos componentes `AlertCard`, `Profile` e `Graphic`, e introduzindo um modal de confirmação para proporcionar uma interação mais intuitiva e agradável aos usuários.
 
 A refatoração do código foi uma parte crucial desse trabalho, com o objetivo de otimizar a estrutura e melhorar a legibilidade, garantindo uma manutenção mais fácil do sistema. Durante esse processo, implementei boas práticas de programação, como a modularização de funções, a eliminação de duplicação de código e a adoção de padrões de nomenclatura consistentes.
@@ -11,11 +11,11 @@ Em resumo, as modificações nos componentes `AlertCard`, `Profile` e `Graphic`,
 
 ---
 
-**Gabriel R:**
+## **Gabriel R:**
 
 ---
 
-**Thiago T:**
+## **Thiago T:**
 Durante o desenvolvimento do projeto, contribuí junto com Victor para a criação da API e sua hospedagem no site PythonAnyWhere. Isso permitiu que o projeto de mecatrônica conseguisse conectar-se e enviar JSON para nossa API. Posteriormente, fui responsável por criar as funções para o tratamento dos dados, armazenamento ou exclusão no banco de dados.
 
 Foram desenvolvidas as seguintes funcionalidades:
@@ -28,9 +28,29 @@ Após a criação da API, auxiliei nossa equipe de frontend na integração entr
 
 ---
 
-**Victor Augusto:**
+## **Victor Augusto:**
 No início do projeto, contribuí junto ao Thiago na criação da API e na implantação no PythonAnywhere. No entanto, devido a questões técnicas, optamos pela versão que o Thiago desenvolveu e implantou na plataforma. Posteriormente, iniciei a criação do primeiro dashboard no Figma, inicialmente planejado para uma aplicação web. Entretanto, decidimos migrar para o ambiente mobile, resultando na elaboração de um novo dashboard no Figma para esta finalidade.
 
 Durante a etapa de desenvolvimento front-end, utilizamos React Native, onde fui responsável pela criação de componentes, como `AlertCard`, `Profile` e `Graphic`. No componente `Profile`, implementei uma lógica que permite a alteração do nome do usuário, mas o salvamento de dados foi realizado por outro colaborador. No `AlertCard`, assegurei que o componente recebesse os dados dos eixos X e Y. Além disso, criei a tela e o componente do gráfico, responsável por exibir os dados dos eixos X e Y capturados pelo sensor.
 
-**Vitor H:**
+## **Vítor Maia:**
+
+Durante meu envolvimento no projeto, desempenhei um papel abrangente, contribuindo significativamente em várias áreas:
+
+### Integração Inicial com o Banco de Dados:
+
+- Iniciei a integração da API Django com o Elephantsql, mas devido a restrições de orçamento, migramos de volta para o SQLite no Python Anywhere.
+
+### Desenvolvimento da API:
+
+- Contribuí ativamente na criação e aprimoramento de rotas essenciais, garantindo eficiência e aderência às melhores práticas.
+### Modernização do Frontend:
+
+- Atuei na modernização completa de telas e componentes do frontend, adotando design contemporâneo e melhorando a experiência do usuário.
+
+### Implementação de Notificações:
+
+- Introduzi notificações de alerta no aplicativo React Native com Expo, proporcionando aos usuários informações críticas em seus dispositivos Android.
+
+  
+Minhas contribuições abrangeram desde a infraestrutura da API até melhorias na experiência do usuário, refletindo habilidades versáteis e compromisso com a qualidade e inovação no projeto.
