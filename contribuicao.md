@@ -52,5 +52,9 @@ Durante meu envolvimento no projeto, desempenhei um papel abrangente, contribuin
 
 - Introduzi notificações de alerta no aplicativo React Native com Expo, proporcionando aos usuários informações críticas em seus dispositivos Android.
 
+### Filtragem de Alertas por Data:
+
+- Adicionalmente, implementei a lógica de filtragem de alertas para exibição exclusiva dos alertas do dia atual no aplicativo Expo React Native. Essa adição visa personalizar a experiência do usuário, apresentando informações mais relevantes e atuais.
+
   
 Minhas contribuições abrangeram desde a infraestrutura da API até melhorias na experiência do usuário, refletindo habilidades versáteis e compromisso com a qualidade e inovação no projeto.
